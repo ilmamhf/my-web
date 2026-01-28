@@ -45,11 +45,21 @@ const Projects = () => {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {project.images.map((img, i) => (
-                                    <div key={i} className="rounded-xl overflow-hidden border border-white/10 bg-white/5 aspect-video md:aspect-[16/10] group">
+                                    <div key={i} className="rounded-xl overflow-hidden border border-white/10 bg-black/50 aspect-video md:aspect-[16/10] group relative">
+                                        {/* Ambient Background Layer */}
+                                        <div className="absolute inset-0">
+                                            <img
+                                                src={img}
+                                                alt=""
+                                                className="w-full h-full object-cover blur-xl opacity-40 scale-110"
+                                            />
+                                        </div>
+
+                                        {/* Main Image Layer */}
                                         <img
                                             src={img}
                                             alt={`${project.name} image ${i}`}
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                            className="relative z-10 w-full h-full object-contain"
                                         />
                                     </div>
                                 ))}

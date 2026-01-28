@@ -40,7 +40,7 @@ const Contact = () => {
 
                 <div className="flex gap-6 mt-8">
                     <a
-                        href="https://linkedin.com"
+                        href="https://www.linkedin.com/in/ilmam-hashfi-firjatullah/"
                         className="p-4 bg-white/5 rounded-xl border border-white/5 hover:bg-[#0077b5] hover:border-transparent hover:-translate-y-1 transition-all duration-300"
                         aria-label="LinkedIn"
                     >
@@ -48,7 +48,7 @@ const Contact = () => {
                     </a>
 
                     <a
-                        href="https://github.com"
+                        href="https://github.com/ilmamhf"
                         className="p-4 bg-white/5 rounded-xl border border-white/5 hover:bg-[#333] hover:border-transparent hover:-translate-y-1 transition-all duration-300"
                         aria-label="GitHub"
                     >

@@ -47,8 +47,8 @@ const Navbar = () => {
           </div>
           <div className="h-6 w-px bg-white/10"></div>
           <div className="flex gap-4">
-            <a href="https://github.com" className="text-text-muted hover:text-white transition-colors"><Github size={20} /></a>
-            <a href="https://linkedin.com" className="text-text-muted hover:text-white transition-colors"><Linkedin size={20} /></a>
+            <a href="https://github.com/ilmamhf" className="text-text-muted hover:text-white transition-colors"><Github size={20} /></a>
+            <a href="https://www.linkedin.com/in/ilmam-hashfi-firjatullah/" className="text-text-muted hover:text-white transition-colors"><Linkedin size={20} /></a>
           </div>
         </div>
 
@@ -75,8 +75,8 @@ const Navbar = () => {
             </a>
           ))}
           <div className="flex gap-6 mt-4 justify-center">
-            <a href="https://github.com" className="text-text-muted hover:text-white transition-colors"><Github size={24} /></a>
-            <a href="https://linkedin.com" className="text-text-muted hover:text-white transition-colors"><Linkedin size={24} /></a>
+            <a href="https://github.com/ilmamhf" className="text-text-muted hover:text-white transition-colors"><Github size={24} /></a>
+            <a href="https://www.linkedin.com/in/ilmam-hashfi-firjatullah/" className="text-text-muted hover:text-white transition-colors"><Linkedin size={24} /></a>
             <a href="mailto:ilmamhf643@gmail.com" className="text-text-muted hover:text-white transition-colors"><Mail size={24} /></a>
           </div>
         </div>
