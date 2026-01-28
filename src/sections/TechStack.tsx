@@ -5,7 +5,7 @@
 // assuming I can access the assets from here. 
 // The paths in App.tsx were relative to src (./assets). Here we are in src/sections, so we need ../assets)
 
-import reactIcon from "../assets/row-1/react.svg";
+import reactIcon from "../assets/row-1/React.svg";
 import tailwindIcon from "../assets/row-1/Tailwind.svg";
 import nextIcon from "../assets/row-1/Nextjs.svg";
 import typescriptIcon from "../assets/row-1/Typescript.svg";
