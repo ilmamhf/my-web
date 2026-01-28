@@ -79,6 +79,46 @@ const projects = [
   },
 ];
 
+interface TechItem {
+  icon: string;
+  name: string;
+}
+
+interface MarqueeProps {
+  items: TechItem[];
+  direction?: "left" | "right";
+  speed?: "fast" | "slow";
+}
+
+const Marquee = ({
+  items,
+  direction = "left",
+  speed = "fast",
+}: MarqueeProps) => {
+  // We only need to double the items for CSS animation to work
+  const displayItems = [...items, ...items];
+
+  return (
+    <div
+      className="scroller"
+      data-animated="true"
+      data-direction={direction}
+      data-speed={speed}
+    >
+      <div className="scroller__inner">
+        {displayItems.map((tech, index) => (
+          <img
+            key={index}
+            src={tech.icon}
+            alt={tech.name}
+            className="w-12 h-12 object-contain flex-shrink-0"
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 function App() {
   return (
     <div className="relative isolate bg-linear-to-b from-[#090713] to-[#291616]  text-[#eaeaf3]">
@@ -133,39 +173,29 @@ function App() {
           <div className="flex flex-col max-w-7xl mx-auto px-6 items-center gap-4">
             <div className="text-5xl font-bold">My Stack</div>
             <div className="min-w-2xs max-w-2xl h-0.5 bg-amber-50 m-5"></div>
-            <div className="text-xl max-w-4xl text-center">
+
+            <div className="text-xl max-w-4xl text-center mb-10 text-gray-300">
               I primarily work with web technologies to build complete
-              solutions. I enjoy exploring different tools and stacks to deliver
-              software that is both reliable and visually polished.
+              solutions.
             </div>
-            <div className="flex flex-col gap-10 py-6">
-              <div className="flex flex-row gap-10 justify-center">
-                {techstackRow1.map((tech) => (
-                  <img
-                    src={tech.icon}
-                    alt={tech.name}
-                    className="w-14 h-14"
-                  />
-                ))}
-              </div>
-              <div className="flex flex-row gap-10 justify-center">
-                {techstackRow2.map((tech) => (
-                  <img
-                    src={tech.icon}
-                    alt={tech.name}
-                    className="w-12 h-12"
-                  />
-                ))}
-              </div>
-              <div className="flex flex-row gap-10 justify-center">
-                {techstackRow3.map((tech) => (
-                  <img
-                    src={tech.icon}
-                    alt={tech.name}
-                    className="w-10 h-10"
-                  />
-                ))}
-              </div>
+
+            {/* Using your max-w-sm preference */}
+            <div className="w-full max-w-sm flex flex-col gap-2">
+              <Marquee
+                items={techstackRow1}
+                direction="right"
+                speed="slow"
+              />
+              <Marquee
+                items={techstackRow2}
+                direction="left"
+                speed="fast"
+              />
+              <Marquee
+                items={techstackRow3}
+                direction="right"
+                speed="slow"
+              />
             </div>
           </div>
         </section>
