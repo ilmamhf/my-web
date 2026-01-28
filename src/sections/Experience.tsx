@@ -5,7 +5,7 @@ const experiences = [
         role: "AI Engineer Intern",
         company: "DOT Indonesia",
         period: "June 2025 - November 2025",
-        desc: "Completed 4 Rnd & PoC projects in 5 months consisted of AI Vision, LLM API, and automation with it's interface. Most techstack used: n8n, NextJS, Python",
+        desc: "Completed 4 Rnd & PoC projects in 5 months consisted of AI Vision, AI API Integration, and automation with its interface. Most techstack used: n8n, NextJS, Python",
     },
 ];
 

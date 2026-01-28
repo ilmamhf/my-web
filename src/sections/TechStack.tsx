@@ -65,15 +65,16 @@ const Marquee = ({
     direction = "left",
     speed = "fast",
 }: MarqueeProps) => {
-    const displayItems = [...items, ...items, ...items]; // Triple for smoother loop on wide screens
+    const displayItems = [...items, ...items];
 
     return (
         <div
             className="scroller overflow-hidden"
+            data-animated="true"
             data-direction={direction}
             data-speed={speed}
         >
-            <div className="scroller__inner flex gap-8 py-4 w-max animate-scroll">
+            <div className="scroller__inner flex gap-12 py-4 w-max flex-nowrap">
                 {displayItems.map((tech, index) => (
                     <div key={index} className="flex flex-col items-center gap-2 group min-w-[80px]">
                         <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all p-3">
@@ -103,7 +104,7 @@ const TechStack = () => {
                     </p>
                 </div>
 
-                <div className="w-full max-w-4xl flex flex-col gap-8 mask-linear-fade">
+                <div className="w-full max-w-xl flex flex-col gap-8 mask-linear-fade">
                     <Marquee items={techstackRow1} direction="left" speed="slow" />
                     <Marquee items={techstackRow2} direction="right" speed="slow" />
                     <Marquee items={techstackRow3} direction="left" speed="slow" />
