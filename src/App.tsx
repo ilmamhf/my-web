@@ -23,8 +23,12 @@ import awsEC2Icon from "./assets/row-3/Aws ec2.svg";
 import newsMapImg1 from "./assets/projects-img/NewsMapID/1.png";
 import newsMapImg2 from "./assets/projects-img/NewsMapID/2.png";
 
+import labCamImg1 from "./assets/projects-img/LabSurveillance/1.webp";
+import labCamImg2 from "./assets/projects-img/LabSurveillance/2.jpg";
+
 import { Mail, Github, Linkedin, MapPin } from "lucide-react";
 import AnimatedBackground from "./components/AnimatedBackground";
+import { motion } from "framer-motion";
 
 const techstackRow1 = [
   { icon: reactIcon, name: "React" },
@@ -49,6 +53,30 @@ const techstackRow3 = [
   { icon: arduinoIcon, name: "Arduino" },
   { icon: onnxIcon, name: "Onnx" },
   { icon: awsEC2Icon, name: "AWS EC2" },
+];
+
+const experiences = [
+  {
+    role: "AI Engineer Intern",
+    company: "DOT Indonesia",
+    period: "June 2025 - November 2025",
+    desc: "Completed 4 Rnd & PoC projects in 5 months consisted of AI Vision, LLM API, and automation with it's interface. Most techstack used: n8n, NextJS, Python",
+  },
+];
+
+const projects = [
+  {
+    name: "NewsMapID",
+    images: [newsMapImg1, newsMapImg2],
+    desc: "NewsMap ID is an interactive full-stack dashboard featuring a responsive SVG map of Indonesia that provides real-time, province-specific news via the GNews API. Built with React, TypeScript, and Node.js (Express), the application features advanced zoom-pan navigation, custom keyword filtering, and efficient local storage caching to optimize performance.",
+    techstack: "Techstack: React Tailwind - NodeJS - GNews API",
+  },
+  {
+    name: "Labcam",
+    images: [labCamImg1, labCamImg2],
+    desc: "I contributed to the development of the face recognition module, prototyped the uniform detection system, deployed the recognition pipeline on AWS EC2, and built the web prototype for system integration. The hybrid AIoT solution combines ESP32-CAM for local uniform detection with cloud-based face recognition, achieving 97% accuracy in facial recognition and 88.8% accuracy in uniform detection with response times under 2 seconds. The project earned 3rd place at the Capstone Graduation Showcase 2025 (AIoT Theme), highlighting innovation in intelligent laboratory security.",
+    techstack: "Techstack: Esp32-Cam, Edge Impulse, C++, Python, AWS, React",
+  },
 ];
 
 function App() {
@@ -142,36 +170,77 @@ function App() {
           </div>
         </section>
 
+        <section
+          id="experience"
+          className="py-40"
+        >
+          <div className="max-w-6xl mx-auto px-6">
+            {/* Title */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-20"
+            >
+              <h2 className="text-5xl font-bold mb-4">Experience</h2>
+              <p className="text-[#b5b5c7] max-w-xl">
+                A short overview of my journey in professional world.
+              </p>
+            </motion.div>
+
+            {/* Cards */}
+            <div className="flex flex-col gap-8">
+              {experiences.map((exp, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-8 hover:border-[#FF1E6D]/40 transition-all"
+                >
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div>
+                      <h3 className="text-2xl font-semibold mb-1 group-hover:text-[#FF1E6D] transition-colors">
+                        {exp.role}
+                      </h3>
+                      <p className="text-[#9ca3af]">{exp.company}</p>
+                    </div>
+
+                    <span className="text-sm text-[#b5b5c7]">{exp.period}</span>
+                  </div>
+
+                  <p className="mt-4 text-[#c9c9da] leading-relaxed max-w-3xl">
+                    {exp.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Projects */}
         <section className="py-40">
           <div className="max-w-7xl mx-auto px-6 gap-4 flex flex-col items-center">
             <div className="text-5xl font-bold">Projects</div>
             <div className="min-w-2xs max-w-2xl h-0.5 bg-amber-50 m-5"></div>
-            <div className="flex flex-col gap-4">
-              <div className="font-bold text-4xl">NewsMap ID</div>
-              <div className="grid grid-cols-2 gap-10">
-                <img
-                  src={newsMapImg1}
-                  alt="NewsMap ID image 1: popover hover feature"
-                  className="w-full rounded-xl"
-                />
-                <img
-                  src={newsMapImg2}
-                  alt="NewsMap ID image 2: detailed news list feature"
-                  className="w-full rounded-xl"
-                />
+            {projects.map((project) => (
+              <div className="flex flex-col gap-4 pb-6">
+                <div className="font-bold text-4xl">{project.name}</div>
+                <div className="grid grid-cols-2 gap-10">
+                  {project.images.map((img, index) => (
+                    <img
+                      src={img}
+                      alt={`${project.name} image ${index}`}
+                      className="w-full rounded-xl"
+                    />
+                  ))}
+                </div>
+                <p>{project.desc}</p>
+                <div className="font-bold text-xl">{project.techstack}</div>
               </div>
-              <p>
-                NewsMap ID is an interactive full-stack dashboard featuring a
-                responsive SVG map of Indonesia that provides real-time,
-                province-specific news via the GNews API. Built with React,
-                TypeScript, and Node.js (Express), the application features
-                advanced zoom-pan navigation, custom keyword filtering, and
-                efficient local storage caching to optimize performance.
-              </p>
-              <div className="font-bold text-xl">
-                Techstack: React Tailwind - NodeJS - GNews API
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
@@ -190,7 +259,7 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl">
               <a
                 href="mailto:ilmamhf643@gmail.com"
-                className="flex items-center gap-4 p-6 rounded-2xl bg-[#2f1a1f] hover:bg-[#3a1f26] transition"
+                className="flex items-center gap-4 p-6 rounded-2xl bg-[#2f1a1f]/40 hover:bg-[#3a1f26]/40 transition"
               >
                 <Mail size={36} />
                 <div>
@@ -199,7 +268,7 @@ function App() {
                 </div>
               </a>
 
-              <div className="flex items-center gap-4 p-6 rounded-2xl bg-[#2f1a1f] hover:bg-[#3a1f26] transition">
+              <div className="flex items-center gap-4 p-6 rounded-2xl bg-[#2f1a1f]/40 hover:bg-[#3a1f26]/40 transition">
                 <MapPin size={36} />
                 <div>
                   <p className="font-semibold">Location</p>
@@ -212,14 +281,14 @@ function App() {
             <div className="flex gap-6">
               <a
                 href="https://linkedin.com"
-                className="p-4 bg-[#421c27] rounded-xl hover:scale-110 transition"
+                className="p-4 bg-[#421c27]/50 rounded-xl hover:scale-110 transition"
               >
                 <Linkedin size={28} />
               </a>
 
               <a
                 href="https://github.com"
-                className="p-4 bg-[#421c27] rounded-xl hover:scale-110 transition"
+                className="p-4 bg-[#421c27]/50 rounded-xl hover:scale-110 transition"
               >
                 <Github size={28} />
               </a>
